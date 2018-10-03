@@ -1,14 +1,48 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar  color="secondary">
+    <ion-title style="text-align: center">
+      Tyler Perry's movie
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+ 
+  <ion-refresher (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content pulling-text="Pull to refresh....."
+    refreshingSpinner="bubbles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+      <ion-slides>
+          <ion-slide>
+         <img width="100%" height="50%"  src="../../assets/imgs/movie1.jpg">
+         <h2>Madea's witness protection</h2>
+          </ion-slide>
+          <ion-slide>
+        <img width="100%" height="50%" src="../../assets/imgs/movies2.jpg">
+        <H2>For better or worse</H2>
+          </ion-slide>
+          <ion-slide>
+            <img width="100%" height="100%" src="../../assets/imgs/movie6.jpg">
+            <h2>The marriage counselor</h2>
+          </ion-slide>
+          <ion-slide>
+               <img width="100%" height="100%" src="../../assets/imgs/movie4.jpg">
+               <H2>The single mom's club</H2>
+          </ion-slide>
+          <ion-slide>
+               <img width="100%" height="100%" src="../../assets/imgs/movie5.jpg">
+               <H2>Diary of a black mad woman</H2>
+          </ion-slide>
+        </ion-slides>
+        <b><h3 style="text-align: center">Select a movie to delete</h3></b>
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item>
+      <img width="10%" height="10%"  src="../../assets/imgs/star.jpg"><b>{{item.title}}</b>
+      </ion-item>
+      <ion-item-options>
+        <button id="lol" ion-button (click)="removeItem(item)">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
